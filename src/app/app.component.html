@@ -13,11 +13,11 @@
   </ul>
 
   @if(selectedUser) {
-  <app-tasks [name]="selectedUser.name" />
+  <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" />
   } @else {
   <p>Select a user to see their tasks!</p>
-  } 
-  <!-- Tarnery operator alternative. -->
+  }
+  <!-- Ternary operator alternative. -->
   <!-- <app-tasks [name]="selectedUser ? selectedUser?.name : ' '" /> -->
 
   <!-- Conditional rendering with ngIf and ng-template - Angular - 16 and below. -->
