@@ -1,9 +1,29 @@
 <app-header></app-header>
 
 <main>
-    <ul id="users">
-        <li>
-            <app-user></app-user>
-        </li>
-    </ul>
+  <ul id="users">
+    @for (user of users; track user.id){
+    <li><app-user [user]="user" (select)="onSelectUser($event)" /></li>
+    }
+
+    <!-- how to loop through users with ngFor- Angular 16 and below. -->
+    <!-- <li *ngFor="let user of users">
+      <app-user [user]="user" (select)="onSelectUser($event)" />
+    </li> -->
+  </ul>
+
+  @if(selectedUser) {
+  <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" />
+  } @else {
+  <p>Select a user to see their tasks!</p>
+  }
+  <!-- Ternary operator alternative. -->
+  <!-- <app-tasks [name]="selectedUser ? selectedUser?.name : ' '" /> -->
+
+  <!-- Conditional rendering with ngIf and ng-template - Angular - 16 and below. -->
+  <!-- <app-tasks *ngIf="selectedUser; else fallback" [name]="selectedUser!.name" />
+
+  <ng-template #fallback>
+    <p>Select a user to see their tasks!</p>
+  </ng-template> -->
 </main>
