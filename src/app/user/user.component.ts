@@ -7,6 +7,7 @@ import {
   Output,
   output,
 } from '@angular/core';
+import { type User } from './user.model';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +17,7 @@ import {
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  @Input({ required: true }) user!: {id: string; name: string; avatar: string}
+  @Input({ required: true }) user!: User;
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
